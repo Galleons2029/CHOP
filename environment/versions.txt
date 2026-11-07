@@ -1,0 +1,20 @@
+# Versions this repository was written and tested against.
+# CPU test suite (macOS arm64, Python 3.11):
+python==3.11
+torch==2.14.0
+transformers==5.10.4          # verl 0.9.1 pins transformers; the core also runs on 5.17
+peft==0.21.1
+numpy==2.4.6
+scipy==1.17.1
+omegaconf==2.3.1
+datasets==5.0.1
+tree-sitter==0.26.0            # the paper lists 0.21.0; the extractor supports both parser APIs
+tree-sitter-python==0.25.0
+swebench==5.0.2
+verl==0.9.1                    # imports, config composition and worker wiring are tested on CPU
+# GPU stack (install on the cluster; not exercised by the CPU suite):
+#   vllm: the version pinned by verl 0.9.1 (>= 0.8.5 is required for Qwen3)
+#   flash-attn / FlexAttention: CUDA builds matching the torch version above
+# Harnesses used for evaluation (paper's reproducibility card):
+#   OpenHands 1.3.0   (eval/swe_openhands.sh; set OPENHANDS_INFER_CMD for that release)
+#   SWE-agent 1.1.0   (eval/swe_agent.sh)

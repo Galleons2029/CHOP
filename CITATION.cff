@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "CHOP: Counterfactual Hierarchical On-Policy Distillation (reference implementation)"
+license: Apache-2.0
+repository-code: "https://github.com/Galleons2029/CHOP"
+authors:
+  - family-names: Liu
+    given-names: Jialong
+  - family-names: Li
+    given-names: Zuchao
+  - family-names: Shi
+    given-names: Yuling
+  - family-names: Zhang
+    given-names: Lefei
+  - family-names: Qi
+    given-names: Baoyuan
+  - family-names: Zhao
+    given-names: Hai
+preferred-citation:
+  type: conference-paper
+  title: "When Token Supervision Fails: Segment-Level On-Policy Distillation for Long-Horizon Agents"
+  collection-title: "Proceedings of the Asia-Pacific Chapter of the Association for Computational Linguistics (AACL)"
+  year: 2026
+  authors:
+    - family-names: Liu
+      given-names: Jialong
+    - family-names: Li
+      given-names: Zuchao
+    - family-names: Shi
+      given-names: Yuling
+    - family-names: Zhang
+      given-names: Lefei
+    - family-names: Qi
+      given-names: Baoyuan
+    - family-names: Zhao
+      given-names: Hai

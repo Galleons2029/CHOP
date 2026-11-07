@@ -1,0 +1,13 @@
+method:
+  name: li2026
+  token:
+    estimator: sampled
+  sft_warmup_prompts: 1000
+  router:
+    rho_gate: none
+    kappa_gate: none
+data:
+  prompt_template: teacher_aligned
+  train_limit: 5000
+notes: 'Li et al. full recipe: SFT on teacher rollouts of 1K prompts, then sampled-token
+  OPD on 5K teacher-aligned prompts.'

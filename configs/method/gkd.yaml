@@ -1,0 +1,8 @@
+method:
+  name: gkd
+  token:
+    estimator: gkd
+    gkd_beta: 1.0
+  router:
+    rho_gate: none
+    kappa_gate: none

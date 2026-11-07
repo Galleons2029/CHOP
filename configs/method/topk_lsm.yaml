@@ -1,0 +1,10 @@
+method:
+  name: topk_lsm
+  token:
+    estimator: topk
+    topk: 32
+    support: teacher
+    mask_special_tokens: true
+  router:
+    rho_gate: none
+    kappa_gate: none

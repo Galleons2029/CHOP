@@ -1,0 +1,4 @@
+method:
+  name: chop
+  segment:
+    anchor_source: student

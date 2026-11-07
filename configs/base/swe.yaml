@@ -1,0 +1,46 @@
+kind: swe
+model:
+  student: Qwen/Qwen3-4B-Instruct-2507
+  teacher: Qwen/Qwen3-8B-Base
+  native_context: 32768
+  dtype: bfloat16
+optim:
+  lr: 2.0e-06
+  betas:
+  - 0.9
+  - 0.95
+  weight_decay: 0.1
+  warmup_steps: 500
+  schedule: cosine
+train:
+  steps: 4500
+  batch_size: 32
+  grad_accum: 4
+  max_response_tokens: 60000
+  rollout_chunk: 4096
+  max_turns: 50
+  temperature: 0.7
+  top_p: 0.95
+data:
+  task: swe
+  train: swe_train_filtered
+  eval:
+  - verified_500
+  manifest: data/manifests/swe_train_filtered.txt
+  eval_samples: 1
+method:
+  pi:
+    sources:
+    - call_graph
+    - test_manifest
+    adapter_dir: outputs/adapters/swe
+seeds:
+- 0
+- 1
+- 2
+gpus: 8
+est_hours_per_seed: 36.0
+eval:
+  harness: openhands
+  max_turns: 50
+  time_limit_s: 600

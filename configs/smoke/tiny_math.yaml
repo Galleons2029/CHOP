@@ -1,0 +1,38 @@
+# CPU smoke test: tiny random Qwen3 student/teacher on a toy arithmetic task.
+# A 96-token native window forces rolling left truncation; two PI sources exercise
+# multi-LoRA composition. Numbers from this run carry no information about CHOP's accuracy.
+name: smoke_tiny
+data:
+  task: toy
+  eval: [eval]
+  eval_samples: 2
+model:
+  tiny: true
+  native_context: 96
+train:
+  steps: 3
+  batch_size: 4
+  max_response_tokens: 48
+  rollout_chunk: 16
+  temperature: 1.0
+  top_p: 1.0
+optim:
+  lr: 1.0e-3
+  warmup_steps: 1
+method:
+  name: chop
+  router:
+    window: 512
+    refresh: 8
+    min_history: 16
+  segment:
+    num_anchors: 4
+    num_student_segments: 4
+    segment_length: 8
+    num_projections: 8
+    max_windows_per_traj: 4
+    rank_fallback_threshold: 0.0
+  pi:
+    sources: [final_answer, hint]
+    max_tokens_per_source: 16
+output_dir: outputs/smoke

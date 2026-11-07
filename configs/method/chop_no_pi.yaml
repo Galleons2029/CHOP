@@ -1,0 +1,6 @@
+method:
+  name: chop
+  router:
+    kappa_gate: none
+  pi:
+    sources: []

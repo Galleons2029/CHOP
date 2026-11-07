@@ -1,0 +1,6 @@
+# GPU training / evaluation (8xH100 nodes). verl pins compatible torch / vllm / transformers versions.
+-r requirements-cpu.txt
+verl==0.9.1
+math-verify>=0.7
+hydra-core>=1.3
+ray>=2.40

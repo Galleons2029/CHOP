@@ -1,0 +1,4 @@
+method:
+  name: chop
+  router:
+    rho_gate: none

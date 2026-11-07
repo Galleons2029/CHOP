@@ -1,0 +1,36 @@
+{
+  "default": {
+    "train_instances": 19008,
+    "verified_instances": 500,
+    "rule_hits": {
+      "path_any": 42
+    },
+    "rules_applied": [
+      "commit",
+      "path"
+    ],
+    "kept": 19008,
+    "removed": 0
+  },
+  "strict": {
+    "train_instances": 19008,
+    "verified_instances": 500,
+    "rule_hits": {
+      "path_any": 42
+    },
+    "rules_applied": [
+      "commit",
+      "path",
+      "same_repo"
+    ],
+    "kept": 19008,
+    "removed": 0
+  },
+  "paper_reported": {
+    "default_removed": 27,
+    "strict_additional_removed": 1823,
+    "train_instances": 19008,
+    "kept_default": 18981
+  },
+  "note": "Counts computed on princeton-nlp/SWE-bench (train) vs princeton-nlp/SWE-bench_Verified."
+}

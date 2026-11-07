@@ -1,0 +1,49 @@
+# CHOP on SWE-bench Verified (tab:swebench_main and its controls), verl 0.9.x + OpenHands AgentLoop.
+# Hyperparameters follow tab:hparams (SWE column): lr 2e-6, 500-step warmup, 32 sequences x 4 accumulation.
+hydra:
+  searchpath:
+    - pkg://verl.trainer.config
+
+defaults:
+  - ppo_trainer
+  - chop_base
+  - _self_
+
+data:
+  train_files: data/processed/swe/swe_train_filtered.parquet
+  val_files: data/processed/swe/verified_500.parquet
+  max_prompt_length: 8192
+  max_response_length: 60000          # 50 turns; average trajectories are 35-43K tokens
+  train_batch_size: 128               # 32 sequences x 4 accumulation per update
+
+actor_rollout_ref:
+  model:
+    path: Qwen/Qwen3-4B-Instruct-2507
+  actor:
+    ppo_mini_batch_size: 128
+    optim:
+      lr: 2.0e-6
+      lr_warmup_steps: 500
+  rollout:
+    agent:
+      default_agent_loop: chop_openhands
+    val_kwargs:
+      n: 1                            # single-trial pass@1
+  chop:
+    teacher_path: Qwen/Qwen3-8B-Base
+    adapter_dir: outputs/adapters/swe
+    method:
+      token: {estimator: topk, topk: 64, support: student}
+      pi: {sources: [call_graph, test_manifest], interface: lora_prefix}   # deployable protocol
+    openhands:
+      version: 1.3.0
+      max_turns: 50
+      timeout_s: 600
+      internet: false
+      hide_tests: true
+
+trainer:
+  experiment_name: swe_chop_deployable
+  total_training_steps: 4500
+  save_freq: 250
+  test_freq: 500

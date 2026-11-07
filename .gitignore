@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+.DS_Store
+
+# run artefacts: only real outputs go under results/, never placeholders
+outputs/
+wandb/
+checkpoints/
+*.ckpt
+*.safetensors
+results/**/*.tmp
+
+# prepared datasets (regenerate with scripts/prepare_*.py)
+data/processed/

@@ -1,0 +1,5 @@
+method:
+  name: reopold
+  reopold_lambda: 0.3
+  reopold_switch_step: 50
+  reopold_entropy_top: 0.2

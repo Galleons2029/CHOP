@@ -1,0 +1,7 @@
+method:
+  name: opsd
+  token:
+    estimator: sampled
+  router:
+    rho_gate: none
+    kappa_gate: always

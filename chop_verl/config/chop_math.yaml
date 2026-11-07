@@ -1,0 +1,13 @@
+# CHOP on long-horizon math (Table tab:math_full / tab:math_main), verl 0.9.x.
+# One run = one method x one cumulative cap x one seed. Hyperparameters follow tab:hparams (math column);
+# all shared settings live in chop_base.yaml.
+# Launch: python -m chop_verl.main --config-name chop_math data.max_response_length=60000 \
+#           actor_rollout_ref.chop.method.name=chop trainer.experiment_name=math_chop_60k_s0
+hydra:
+  searchpath:
+    - pkg://verl.trainer.config
+
+defaults:
+  - ppo_trainer
+  - chop_base
+  - _self_
